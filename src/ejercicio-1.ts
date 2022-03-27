@@ -262,9 +262,7 @@ export class Combat {
 
     const fuerteContraRobot: type[] = ['CaC'];
     const debilContraRobot: type[] = ['aDistancia'];
-
-    console.log('T1 = ', p1.getTipo());
-    console.log('T2 = ', p2.getTipo());
+    
     if (p1.getTipo() === p2.getTipo()) {
       return 50 * (p1.getAtaque() / p2.getDefensa()) * 0.5;
     }
