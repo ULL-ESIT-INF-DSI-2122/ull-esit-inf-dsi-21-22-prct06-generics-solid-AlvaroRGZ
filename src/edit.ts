@@ -30,16 +30,16 @@ export interface Printable<T> {
   print(): string;
 }
 
-export abstract class PrintableColleccion<X> implements Printable<X>, Collectable<X>{
+export abstract class PrintableColleccion<X> implements Printable<X>, Collectable<X> {
   /**
    * 
    * @param collection vector of items collected
    */
-  constructor(protected collection: X[]){}
+  constructor(protected collection: X[]) {}
   /**
    * @param x item to add
    */
-  addItem(x: X): void{
+  addItem(x: X): void {
     this.collection.push(x);
   }
   /**

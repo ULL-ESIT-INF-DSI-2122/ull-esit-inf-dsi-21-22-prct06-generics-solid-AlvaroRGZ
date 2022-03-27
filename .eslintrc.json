@@ -15,5 +15,16 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "require-jsdoc": "off",
+      "valid-jsdoc": "off",
+      "space-before-blocks": "off",
+      "eol-last": "off",
+      "max-len": "off",
+      "no-unused-vars": "off",
+      "indent": "off",
+      "no-trailing-spaces": "off",
+      "no-multiple-empty-lines": "off",
+      "padded-blocks": "off",
+      "operator-linebreak": "off"
     }
 }
