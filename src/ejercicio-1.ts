@@ -1,8 +1,27 @@
+/**
+ * Tipos generales entre universos
+ */
 type type = 'aDistancia' | 'CaC' | 'magico' | 'robot';
+
+/**
+ * Tipos de luchadores en cada universo
+ */
 type tPokemon = 'agua' | 'electrico' | 'fuego' | 'planta'; 
 type tMarvel = 'bueno' | 'malo';
 type tStarWars = 'claro' | 'oscuro';
 
+/**
+ *  Representa los datos basicos de un luchador
+ *  @param nombre nombre
+ *  @param catchingPhrase frase iconica
+ *  @param tipo tipo general de luchador
+ *  @param ataque ataque
+ *  @param defensa defensa
+ *  @param vida vida maxima
+ *  @param peso peso
+ *  @param altura altura
+ *  @param velocidad velocidad del luchador
+ */
 export class Fighter {
   constructor(
     protected nombre: string,
@@ -15,34 +34,69 @@ export class Fighter {
     protected altura: number,
     protected velocidad: number){}
 
+  /**
+   * @returns el nombre del luchador
+   */
   getNombre(): string {
     return this.nombre;
   }
+    /**
+   * @returns el tipo del luchador
+   */
   getTipo(): type {
     return this.tipo;
   }
+    /**
+   * @returns la vida del luchador
+   */
   getVida(): number {
     return this.vida;
   }
+    /**
+   * @returns el ataque del luchador
+   */
   getAtaque(): number {
     return this.ataque;
   }
+    /**
+   * @returns la defensa del luchador
+   */
   getDefensa(): number {
     return this.defensa;
   }
+    /**
+   * @returns la frase iconica del luchador
+   */
+  getCatchingPhrase(): string {
+    return this.catchingPhrase;
+  }
+    /**
+     *  @param daño daño inflingido
+     *  le resta a la vida el daño infligido
+   */
   restVida(daño: number ) {
     this.vida -= daño;
   }
+    /**
+   * @param vida actualiza la vida a ese valor
+   */
   setVida(vida: number ) {
     this.vida = vida;
   }
-    
+  
+  /**
+   * Muestra los datos del luchador
+   * */
   showStatus(){
     console.log(this.nombre.toUpperCase(), ' : ', this.tipo);
     console.log('HP: ', this.vida);
   }
 }
 
+/**
+ * Representa a un luchador del universo Pokemon
+ * @param tipologia Tipo concreto de ese pokemon
+ */
 export class UniversePokemon extends Fighter {
   constructor(
     nombre: string,
@@ -55,13 +109,16 @@ export class UniversePokemon extends Fighter {
     altura: number,
     velocidad: number,
     private tipologia: tPokemon){
-    
+    catchingPhrase += ' y soy un pokemon';    
     super(nombre, catchingPhrase, tipo, ataque, defensa, 
             vida, peso, altura, velocidad);
-      catchingPhrase += ' y soy un pokemon';    
     }
 }
 
+/**
+ * Representa a un luchador del universo Marvel
+ * @param bando de ese luchador
+ */
 export class UniverseMarvel extends Fighter {
   constructor(
     nombre: string,
@@ -75,12 +132,16 @@ export class UniverseMarvel extends Fighter {
     velocidad: number,
     private bando: tMarvel){
     
+      catchingPhrase += ' y soy del universo Marvel'; 
       super(nombre, catchingPhrase, tipo, ataque, defensa, 
-        vida, peso, altura, velocidad);
-      catchingPhrase += ' y soy del universo Marvel';    
+        vida, peso, altura, velocidad);   
     }
 }
 
+/**
+ * Representa a un luchador del universo StarWars
+ * @param lado del luchador
+ */
 export class UniverseStarWars extends Fighter {
   constructor(
     nombre: string,
@@ -92,31 +153,59 @@ export class UniverseStarWars extends Fighter {
     peso: number,
     altura: number,
     velocidad: number,
-
     private lado: tStarWars){
-    
+      catchingPhrase += ' y soy del universo StarWars';  
       super(nombre, catchingPhrase, tipo, ataque, defensa, 
-        vida, peso, altura, velocidad);
-      catchingPhrase += ' y soy del universo StarWars';    
+        vida, peso, altura, velocidad);  
     }
 }
 
+/**
+ * Registra los luchadores permitidos para el conbate
+ */
 export class Fighterdex {
+  /**
+   * 
+   * @param list_ vector de luchadores permitidos
+   */
   constructor(private list_: Fighter[]){}
+  /**
+   * 
+   * @param p luchador a buscar en la lista
+   * @returns si esta o no en la lista
+   */
   isRegistered(p: Fighter): boolean {
     return this.list_.includes(p);
   }
+  /**
+   * 
+   * @returns la lista de candidatos
+   */
   getList(): Fighter[] {
     return this.list_;
   }
 }
 
+/**
+ * Representa y simula el combate entre dos luchadores
+ */
 export class Combat {
+  /**
+   * 
+   * @param p1 luchador 1
+   * @param p2 luchador 2
+   */
   constructor(private p1: Fighter, private p2: Fighter){}
               // private candidates: Pokedex) {
 
+  /**
+   * 
+   * @param p1 atacante
+   * @param p2 defensor
+   * @returns daño real del ataque
+   */
   dañoReal(p1: Fighter, p2: Fighter) {
-    let efectividad: number = 0;
+    let efectividad: number = 1;
     const fuerteContraCaC: type[] = ['aDistancia'];
     const debilContraCaC: type[] = ['robot'];
 
@@ -172,18 +261,27 @@ export class Combat {
     return Math.floor(50 * (p1.getAtaque() / p2.getDefensa()) * efectividad);
   }
 
+  /**
+   * Muestra el estado del combate
+   */
   showCombatStatus(){
     console.log(this.p1.getNombre(), '              ', this.p2.getNombre());
     console.log(this.p1.getTipo(), '              ', this.p2.getTipo());
     console.log(this.p1.getVida(), '      HP      ', this.p2.getVida());
   }
-
+  /**
+   * 
+   * @param p muestra a P el ganador
+   */
   showWinner(p: Fighter){
     console.log('----------------------------------------------');
     console.log('WINS!');
     p.showStatus();
   }
-
+  /**
+   * Simlua el combate por turnos, lo hace sin modificar la vida de los contricantes.
+   * @returns el luchador ganador
+   */
   start(): Fighter{
     let attacker: Boolean = true;
     let p1Wins: Boolean = false;
@@ -223,6 +321,10 @@ export class Combat {
       return this.p2;
     }
   }
+    /**
+   * Simlua el combate por turnos, lo hace modificando la vida de los contricantes.
+   * @returns el luchador ganador
+   */
   startRestingHP(): Fighter{
     let attacker: Boolean = true;
     let p1Wins: Boolean = false;
@@ -234,6 +336,7 @@ export class Combat {
 
     while ( this.p1.getVida() > 0 && this.p2.getVida() > 0) {
       if (attacker) {
+        console.log(this.p1.getCatchingPhrase());
         if ((this.p2.getVida() < this.dañoReal(this.p1, this.p2))) {
           this.p2.setVida(0);
           p1Wins = true;
@@ -241,6 +344,7 @@ export class Combat {
           this.p2.restVida(this.dañoReal(this.p1, this.p2));
         }
       } else {
+        console.log(this.p2.getCatchingPhrase());
         if ((this.p1.getVida() < this.dañoReal(this.p2, this.p1))) {
           this.p1.setVida(0);
           p1Wins = false;

@@ -31,7 +31,7 @@ describe('Pruebas del Combate Definitivo', () => {
   describe('Combates entre luchadores', () => {
     it('Combates de luchadores Pokemon', () => {
       const c1 = new Combat(Pokemon.Luxray, Pokemon.Garchomp);
-      expect(c1.start()).to.be.equal(Pokemon.Luxray);
+      expect(c1.start()).to.be.equal(Pokemon.Garchomp);
     });
     it('Combates de luchadores Marvel', () => {
       const c1 = new Combat(Marvel.GreenArrow, Marvel.Ironman);
@@ -64,7 +64,7 @@ describe('Pruebas del Combate Definitivo', () => {
       const c3 = new Combat(Marvel.Ironman, Marvel.GreenArrow);
       expect(c3.start()).to.be.equal(Marvel.Ironman);
       const c4 = new Combat(Marvel.Ironman, Marvel.Thanos);
-      expect(c4.start()).to.be.equal(Marvel.Thanos);
+      expect(c4.start()).to.be.equal(Marvel.Ironman);
 
       const c5 = new Combat(Marvel.BlackWidow, Marvel.BlackWidow);
       expect(c5.start()).to.be.equal(Marvel.BlackWidow);
@@ -73,7 +73,7 @@ describe('Pruebas del Combate Definitivo', () => {
       const c7= new Combat(Marvel.BlackWidow, Marvel.GreenArrow);
       expect(c7.start()).to.be.equal(Marvel.GreenArrow);
       const c8= new Combat(Marvel.BlackWidow, Marvel.Thanos);
-      expect(c8.start()).to.be.equal(Marvel.Thanos);
+      expect(c8.start()).to.be.equal(Marvel.BlackWidow);
 
       const c9 = new Combat(Marvel.GreenArrow, Marvel.GreenArrow);
       expect(c9.start()).to.be.equal(Marvel.GreenArrow);
@@ -82,14 +82,14 @@ describe('Pruebas del Combate Definitivo', () => {
       const c11 = new Combat(Marvel.GreenArrow, Marvel.BlackWidow);
       expect(c11.start()).to.be.equal(Marvel.GreenArrow);
       const c12 = new Combat(Marvel.GreenArrow, Marvel.Thanos);
-      expect(c12.start()).to.be.equal(Marvel.GreenArrow);
+      expect(c12.start()).to.be.equal(Marvel.Thanos);
 
       const c13 = new Combat(Marvel.Thanos, Marvel.Thanos);
       expect(c13.start()).to.be.equal(Marvel.Thanos);
       const c14 = new Combat(Marvel.Thanos, Marvel.GreenArrow);
-      expect(c14.start()).to.be.equal(Marvel.GreenArrow);
+      expect(c14.start()).to.be.equal(Marvel.Thanos);
       const c15 = new Combat(Marvel.Thanos, Marvel.Ironman);
-      expect(c15.start()).to.be.equal(Marvel.Thanos);
+      expect(c15.start()).to.be.equal(Marvel.Ironman);
       const c16 = new Combat(Marvel.Thanos, Marvel.BlackWidow);
       expect(c16.start()).to.be.equal(Marvel.Thanos);
     });
@@ -97,7 +97,7 @@ describe('Pruebas del Combate Definitivo', () => {
       const c1 = new Combat(StarWars.Luke, StarWars.Yoda);
       expect(c1.startRestingHP()).to.be.equal(StarWars.Yoda);
       const c2 = new Combat(Marvel.Thanos, Pokemon.Garchomp);
-      expect(c2.startRestingHP()).to.be.equal(Marvel.Thanos);
+      expect(c2.startRestingHP()).to.be.equal(Pokemon.Garchomp);
     });
   });
 });
