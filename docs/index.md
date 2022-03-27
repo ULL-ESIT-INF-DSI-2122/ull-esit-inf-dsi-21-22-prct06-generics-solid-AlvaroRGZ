@@ -458,7 +458,10 @@ export class Combat {
 ```
 
 **Pruebas**
+
 ![p1](./images/p1.png)
+
+Las pruebas aparecen separadas debido a que se muestra el combate por pantalla.
 
 ***
 
@@ -712,6 +715,7 @@ export class Documental extends Stremeable{
 ```
 
 **Pruebas**
+
 ![p2](./images/p2.png)
 
 ***
@@ -831,4 +835,20 @@ export class DeCypher extends Cifrado {
 ```
 
 **Pruebas**
+
 ![p3](./images/p3.png)
+
+
+***
+
+<a name="e4"></a>
+## Coveralls
+
+![p4](./images/p4.png)
+
+***
+
+<a name="e5"></a>
+## Instambul
+
+![p5](./images/p5.png)
