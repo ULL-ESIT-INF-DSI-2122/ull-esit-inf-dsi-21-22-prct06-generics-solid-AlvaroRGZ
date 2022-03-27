@@ -844,11 +844,11 @@ export class DeCypher extends Cifrado {
 <a name="e4"></a>
 ## Coveralls
 
-![p4](./images/p4.png)
+![p5](./images/p5.png)
 
 ***
 
 <a name="e5"></a>
 ## Instambul
 
-![p5](./images/p5.png)
+![p4](./images/p4.png)
