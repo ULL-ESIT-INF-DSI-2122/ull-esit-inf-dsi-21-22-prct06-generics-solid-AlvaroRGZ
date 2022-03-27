@@ -4,13 +4,20 @@
 type type = 'aDistancia' | 'CaC' | 'magico' | 'robot';
 
 /**
- * Tipos de luchadores en cada universo
+ * Tipos de luchadores en Pokemon
  */
 type tPokemon = 'agua' | 'electrico' | 'fuego' | 'planta'; 
+/**
+ * Tipo de luchadores en Marvel
+ */
 type tMarvel = 'bueno' | 'malo';
+/**
+ * Tipos de luchadores en StarWars
+ */
 type tStarWars = 'claro' | 'oscuro';
 
-/**
+export class Fighter {
+  /**
  *  Representa los datos basicos de un luchador
  *  @param nombre nombre
  *  @param catchingPhrase frase iconica
@@ -22,7 +29,6 @@ type tStarWars = 'claro' | 'oscuro';
  *  @param altura altura
  *  @param velocidad velocidad del luchador
  */
-export class Fighter {
   constructor(
     protected nombre: string,
     protected catchingPhrase: string,
@@ -98,6 +104,19 @@ export class Fighter {
  * @param tipologia Tipo concreto de ese pokemon
  */
 export class UniversePokemon extends Fighter {
+  /**
+ *  Representa los datos basicos de un luchador
+ *  @param nombre nombre
+ *  @param catchingPhrase frase iconica
+ *  @param tipo tipo general de luchador
+ *  @param ataque ataque
+ *  @param defensa defensa
+ *  @param vida vida maxima
+ *  @param peso peso
+ *  @param altura altura
+ *  @param velocidad velocidad del luchador
+ *  @param tipologia tipo de pokemon
+ */
   constructor(
     nombre: string,
     catchingPhrase: string,
@@ -120,6 +139,19 @@ export class UniversePokemon extends Fighter {
  * @param bando de ese luchador
  */
 export class UniverseMarvel extends Fighter {
+    /**
+ *  Representa los datos basicos de un luchador
+ *  @param nombre nombre
+ *  @param catchingPhrase frase iconica
+ *  @param tipo tipo general de luchador
+ *  @param ataque ataque
+ *  @param defensa defensa
+ *  @param vida vida maxima
+ *  @param peso peso
+ *  @param altura altura
+ *  @param velocidad velocidad del luchador
+ *  @param bando bando de luchador 
+ */
   constructor(
     nombre: string,
     catchingPhrase: string,
@@ -143,6 +175,19 @@ export class UniverseMarvel extends Fighter {
  * @param lado del luchador
  */
 export class UniverseStarWars extends Fighter {
+    /**
+ *  Representa los datos basicos de un luchador
+ *  @param nombre nombre
+ *  @param catchingPhrase frase iconica
+ *  @param tipo tipo general de luchador
+ *  @param ataque ataque
+ *  @param defensa defensa
+ *  @param vida vida maxima
+ *  @param peso peso
+ *  @param altura altura
+ *  @param velocidad velocidad del luchador
+ *  @param lado tlado del luchador
+ */
   constructor(
     nombre: string,
     catchingPhrase: string,
