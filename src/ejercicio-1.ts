@@ -128,10 +128,10 @@ export class UniversePokemon extends Fighter {
     altura: number,
     velocidad: number,
     private tipologia: tPokemon){
-    catchingPhrase += ' y soy un pokemon';    
-    super(nombre, catchingPhrase, tipo, ataque, defensa, 
-            vida, peso, altura, velocidad);
-    }
+      super(nombre, catchingPhrase, tipo, ataque, defensa, 
+        vida, peso, altura, velocidad);
+        catchingPhrase += ' y soy un pokemon';    
+      }
 }
 
 /**
@@ -164,9 +164,9 @@ export class UniverseMarvel extends Fighter {
     velocidad: number,
     private bando: tMarvel){
     
-      catchingPhrase += ' y soy del universo Marvel'; 
       super(nombre, catchingPhrase, tipo, ataque, defensa, 
         vida, peso, altura, velocidad);   
+        catchingPhrase += ' y soy del universo Marvel'; 
     }
 }
 
@@ -199,9 +199,9 @@ export class UniverseStarWars extends Fighter {
     altura: number,
     velocidad: number,
     private lado: tStarWars){
-      catchingPhrase += ' y soy del universo StarWars';  
       super(nombre, catchingPhrase, tipo, ataque, defensa, 
         vida, peso, altura, velocidad);  
+        catchingPhrase += ' y soy del universo StarWars';  
     }
 }
 
